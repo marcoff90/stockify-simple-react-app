@@ -7,11 +7,13 @@ const getDateArray = (dateRange: Range): string[] => {
   const endDate = dateRange.endDate;
 
   if (startDate && endDate) {
-    while (startDate <= endDate) {
+    const finishDate = new Date(endDate.setDate(endDate.getDate() + 1))
+    while (startDate < finishDate) {
       const date = `${startDate.getDate()}-${startDate.getMonth()}-${startDate.getFullYear()}`;
       result.push(date);
       startDate.setDate(startDate.getDate() + 1);
     }
+
   }
   return result;
 };
